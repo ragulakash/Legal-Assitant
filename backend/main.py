@@ -1,7 +1,9 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from typing import List, Optional, Dict
+import os
 
 from rag_system import rag_engine
 from llm_engine import llm_engine
@@ -65,6 +67,19 @@ async def draft_document(query: Query):
     if not query.template:
         raise HTTPException(status_code=400, detail="Template name is required for drafting.")
     return await query_legal_docs(query)
+
+# Serve static files from the 'static' directory if it exists
+if os.path.exists("static"):
+    app.mount("/", StaticFiles(directory="static", html=True), name="static")
+
+    # Catch-all route for SPA support
+    @app.get("/{full_path:path}")
+    async def serve_spa(full_path: str):
+        index_path = os.path.join("static", "index.html")
+        if os.path.exists(index_path):
+            from fastapi.responses import FileResponse
+            return FileResponse(index_path)
+        return {"message": "Legal Assistant API - Static files not found"}
 
 if __name__ == "__main__":
     import uvicorn

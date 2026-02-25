@@ -45,5 +45,21 @@ cd backend
 pytest
 ```
 
+## 🌐 Hosting
+
+The project is search-ready for deployment using the included `Dockerfile`.
+
+### Option: Hugging Face Spaces (Recommended)
+1. Create a new **Docker Space** on Hugging Face.
+2. Upload the project files (or connect your GitHub repo).
+3. Add your `GOOGLE_API_KEY` as a **Variable/Secret** in the Space settings.
+4. The Space will automatically build and host your Legal Assistant.
+
+### Option: Render
+1. Create a new **Web Service** on Render.
+2. Select the GitHub repository.
+3. Choose the **Docker** runtime.
+4. Add `GOOGLE_API_KEY` in the environment variables.
+
 ---
 *Created with ❤️ for Legal Professionals.*
