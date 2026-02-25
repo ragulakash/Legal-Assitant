@@ -7,3 +7,8 @@ chromadb
 pypdf
 python-multipart
 pydantic
+google-generativeai
+python-dotenv
+httpx
+pytest
+pytest-asyncio
