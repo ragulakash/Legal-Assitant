@@ -28,10 +28,6 @@ class Response(BaseModel):
     answer: str
     citations: List[Dict] = []
 
-@app.get("/")
-async def root():
-    return {"message": "Legal Assistant API is running"}
-
 @app.get("/health")
 async def health_check():
     return {"status": "healthy"}
