@@ -65,7 +65,7 @@ function App() {
     setLoading(true);
 
     try {
-      const endpoint = view === 'chat' ? 'http://localhost:8000/query' : 'http://localhost:8000/draft';
+      const endpoint = view === 'chat' ? '/query' : '/draft';
       const response = await axios.post(endpoint, payload);
 
       const botMessage = {
@@ -152,7 +152,7 @@ function App() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
             <div className="glass" style={{ padding: '6px 14px', borderRadius: '14px', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--accent-primary)' }}>
               <Sparkles size={16} />
-              <span style={{ fontWeight: 600 }}>Gemini 1.5 Intelligence</span>
+              <span style={{ fontWeight: 600 }}>Gemini 2.0 Intelligence</span>
             </div>
             <div style={{
               width: '38px',
