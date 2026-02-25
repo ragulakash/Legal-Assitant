@@ -1,3 +1,12 @@
+---
+title: Legal Assistant AI
+emoji: ⚖️
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+pinned: false
+---
+
 # ⚖️ Legal Assistant AI
 
 A sophisticated, AI-powered legal research and drafting assistant built with **FastAPI**, **React**, and **Google Gemini 1.5**. This application leverages Retrieval-Augmented Generation (RAG) to provide citations from Indian Supreme Court precedents.
