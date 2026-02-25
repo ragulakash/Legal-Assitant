@@ -1,0 +1,38 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.13.2, pytest-9.0.2, pluggy-1.6.0
+rootdir: E:\Legal Assistant\backend
+plugins: anyio-4.10.0, langsmith-0.7.6, asyncio-1.3.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 9 items
+
+test_rag.py ...                                                          [ 33%]
+test_llm.py ..                                                           [ 55%]
+test_api.py ...F                                                         [100%]
+
+================================== FAILURES ===================================
+_____________________________ test_draft_endpoint _____________________________
+test_api.py:47: in test_draft_endpoint
+    assert "PETITION" in data["answer"].upper()
+E   AssertionError: assert 'PETITION' in 'FAILED TO GENERATE CONTENT AFTER TRYING MULTIPLE MODELS. LAST ERROR: 404 MODELS/GEMINI-1.5-PRO IS NOT FOUND FOR API V...IS NOT SUPPORTED FOR GENERATECONTENT. CALL LISTMODELS TO SEE THE LIST OF AVAILABLE MODELS AND THEIR SUPPORTED METHODS.'
+E    +  where 'FAILED TO GENERATE CONTENT AFTER TRYING MULTIPLE MODELS. LAST ERROR: 404 MODELS/GEMINI-1.5-PRO IS NOT FOUND FOR API V...IS NOT SUPPORTED FOR GENERATECONTENT. CALL LISTMODELS TO SEE THE LIST OF AVAILABLE MODELS AND THEIR SUPPORTED METHODS.' = <built-in method upper of str object at 0x000001B53D7E63D0>()
+E    +    where <built-in method upper of str object at 0x000001B53D7E63D0> = 'Failed to generate content after trying multiple models. Last error: 404 models/gemini-1.5-pro is not found for API v...is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.'.upper
+============================== warnings summary ===============================
+rag_system.py:17
+  E:\Legal Assistant\backend\rag_system.py:17: LangChainDeprecationWarning: The class `Chroma` was deprecated in LangChain 0.2.9 and will be removed in 1.0. An updated version of the class exists in the `langchain-chroma package and should be used instead. To use it run `pip install -U `langchain-chroma` and import as `from `langchain_chroma import Chroma``.
+    self.vector_store = Chroma(
+
+llm_engine.py:2
+  E:\Legal Assistant\backend\llm_engine.py:2: FutureWarning: 
+  
+  All support for the `google.generativeai` package has ended. It will no longer be receiving 
+  updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+  See README for more details:
+  
+  https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+  
+    import google.generativeai as genai
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED test_api.py::test_draft_endpoint - AssertionError: assert 'PETITION' i...
+================== 1 failed, 8 passed, 2 warnings in 22.88s ===================
